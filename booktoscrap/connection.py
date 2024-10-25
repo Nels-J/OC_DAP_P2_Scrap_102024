@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from requests import Response
 
 
-def get_url_response(url:str) -> Response:
+def get_url_response(url: str) -> Response:
     """
         Takes an url use requests library to get a response object
 
@@ -15,10 +15,10 @@ def get_url_response(url:str) -> Response:
     """
     response = requests.get(url)
     response.raise_for_status()
-    print(f"Status code answer: {response.status_code}\n")
     return response
 
-def get_soup(url:str) -> BeautifulSoup:
+
+def get_soup(url: str) -> BeautifulSoup:
     """
         Takes an url use bs4 library to get a content to a html document
 
