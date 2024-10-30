@@ -36,8 +36,8 @@ def list_product_page_links_from_category(category_url: str) -> list[str]:
     if not pager:
         return [category_url]
     pages_count = int(pager.text.split('of ')[1].strip())
-    category_url = category_url[:-10]
-    return [f"{category_url}page-{page}.html" for page in range(1, pages_count + 1)]
+    base_category_url = category_url[:-10]
+    return [f"{base_category_url}page-{page}.html" for page in range(1, pages_count + 1)]
 
 if __name__ == '__main__':
     for category_name, category_url in get_categories_from_home('https://books.toscrape.com/index.html'):
