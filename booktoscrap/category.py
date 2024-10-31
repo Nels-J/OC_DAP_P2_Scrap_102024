@@ -3,7 +3,7 @@ from pprint import pprint
 from booktoscrap.connection import get_soup
 
 
-def get_categories_from_home(homepage_url):
+def get_categories_from_home(homepage_url: str):
     """
         Take the given homepage_url and discover available categories and their related url's.
 
