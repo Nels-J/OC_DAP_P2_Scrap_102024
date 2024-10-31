@@ -33,5 +33,5 @@ def get_soup(url: str) -> BeautifulSoup:
 
 
 if __name__ == "__main__":
-    get_url_response('https://books.toscrape.com/index.html')
-    print(get_soup('https://books.toscrape.com/index.html'))
+    get_url_response("https://books.toscrape.com/index.html")
+    print(get_soup("https://books.toscrape.com/index.html"))
