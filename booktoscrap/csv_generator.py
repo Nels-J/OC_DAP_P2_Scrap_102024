@@ -1,10 +1,20 @@
 import csv
-import time
+from typing import Iterable
 
 
-def create_books_informations_csv_file(filename: str, fieldnames: list[str], book_data: list[dict[str, str]]):
-    start_time = time.time()
-    with open(filename, 'w') as csv_output_file:
+def create_books_informations_csv_file(filename: str, book_data: Iterable):
+
+    fieldnames = [
+        "Availability",
+        "Number of reviews",
+        "Price (excl. tax)",
+        "Price (incl. tax)",
+        "Product Type",
+        "Tax",
+        "UPC",
+    ]
+
+    with open(filename, "w") as csv_output_file:
         writer = csv.DictWriter(csv_output_file, fieldnames=fieldnames)
 
         # Écrire l'en-tête
@@ -14,8 +24,6 @@ def create_books_informations_csv_file(filename: str, fieldnames: list[str], boo
         for book in book_data:
             writer.writerow(book)
 
-    end_time = time.time()
-    print(f"Temps d'écriture : {end_time - start_time} secondes")
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     pass
