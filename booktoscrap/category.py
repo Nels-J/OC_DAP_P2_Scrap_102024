@@ -2,13 +2,15 @@ from pprint import pprint
 
 from booktoscrap.connection import get_soup
 
+BASE_CATALOGUE_URL = "https://books.toscrape.com/catalogue/"
+
 
 def get_categories_from_home(homepage_url: str):
     """
-        Take the given homepage_url and discover available categories and their related url's.
+        Take an URL, discover available categories and their related url's.
 
     Args:
-        homepage_url: The url of the homepage from the book.toscrape.com site. (i.e.: https://books.toscrape.com/index.html)
+        homepage_url: The url of the homepage from the book.toscrape.com site.
 
     Yields:
         tuple: Containing a category name and her related url.
@@ -22,10 +24,10 @@ def get_categories_from_home(homepage_url: str):
 
 def list_product_page_links_from_category(category_url: str) -> list[str]:
     """
-        Take a category url and discover available other pages links (pagination).
+        Take a category url, discover available other pages links (pagination).
 
     Args:
-        category_url: The url of a category page from the book.toscrape.com site.
+        category_url: URL of a category page from the book.toscrape.com site.
 
     Returns:
         list: A list of all product page links from a category
@@ -50,6 +52,6 @@ if __name__ == "__main__":
 
     pprint(
         list_product_page_links_from_category(
-            "https://books.toscrape.com/catalogue/category/books/sequential-art_5/index.html"
+            f"{BASE_CATALOGUE_URL}category/books/sequential-art_5/index.html"
         )
     )

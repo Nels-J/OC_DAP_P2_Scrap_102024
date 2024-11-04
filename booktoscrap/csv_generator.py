@@ -23,7 +23,3 @@ def create_books_informations_csv_file(filename: str, book_data: Iterable):
         # Écrire les données des livres
         for book in book_data:
             writer.writerow(book)
-
-
-if __name__ == "__main__":
-    pass

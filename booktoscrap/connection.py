@@ -20,7 +20,7 @@ def get_url_response(url: str) -> Response:
 
 def get_soup(url: str) -> BeautifulSoup:
     """
-        Takes an url use bs4 library to get a content to a html document as a 'soup'
+        Takes an url use bs4 library to get html content as a 'soup'
 
     Args:
         url: An url as a string

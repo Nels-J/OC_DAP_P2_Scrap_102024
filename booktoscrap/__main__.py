@@ -1,5 +1,5 @@
 from booktoscrap.book import (
-    get_book_informations,
+    get_book_infos,
     generate_all_book_urls_from_category_page,
 )
 from booktoscrap.category import (
@@ -16,7 +16,7 @@ def scrapbooks(category_url):
         # Pour chacune des pages, liste les liens url des livres
         for book_url in generate_all_book_urls_from_category_page(category_page):
             # Pour chaque livre récupère la grille d'informations
-            book_info = get_book_informations(book_url)
+            book_info = get_book_infos(book_url)
             yield book_info
 
 
