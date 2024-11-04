@@ -164,5 +164,10 @@ cython_debug/
 .idea/usage.statistics.xml
 .idea/dictionaries
 
+# Autoformatter flake8
+.flake8
+
 # Generated files
 /booktoscrap/*.csv
+
+
