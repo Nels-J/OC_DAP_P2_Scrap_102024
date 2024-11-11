@@ -17,26 +17,36 @@ def get_book_infos(book_url: str) -> dict[str, str]:
     """
     soup = get_soup(book_url)
 
-    # On récupère le titre du livre qu'on ajoute à notre dictionnaire
+    # On récupère le titre du livre qu'on ajoute à notre dictionnaire.
     book_informations = {"Title": soup.find("h1").text.strip()}
 
-    # On récupère la classe représentant la note des lecteurs
+    # On récupère la classe représentant la note des lecteurs.
     star_rating = soup.find("p", class_="star-rating")
     if star_rating:
-        # On liste les classes présentes dans le tag, puis on extrait la classe additionnelle différente de 'star-rating'
+        # On liste les classes présentes dans le tag,
+        # puis on extrait la classe additionnelle différente de 'star-rating'
         class_list = star_rating.get('class')
         additional_class = [cls for cls in class_list if cls != 'star-rating'][0]
-        # On récupère la note de ce livre qu'on ajoute à notre dictionnaire
-        book_informations["Rating"] = additional_class
+        # Transformation de la classe en 'nombre' pour faciliter l'exploitation.
+        rating_dict = {
+            'One': '1',
+            'Two': '2',
+            'Three': '3',
+            'Four': '4',
+            'Five': '5'
+        }
+        rating_value = rating_dict.get(additional_class, 0)  # Retourne 0 si la classe n'est pas dans le dictionnaire.
+        # On ajoute cette note à notre dictionnaire
+        book_informations["Rating"] = rating_value
 
-    # On récupère les informations du livre présentes dans un tableau
+    # On récupère les informations du livre présentes dans un tableau.
     table = soup.find("table", class_="table table-striped")
     for row in table.find_all("tr"):
         key = row.find("th").text.strip()
         value = row.find("td").text.strip()
         if "Price" or "Tax" in key:
             value = value.replace("Â£", "£").strip()
-            # On ajoute les infos au dictionnaire
+            # On ajoute les infos au dictionnaire.
             book_informations[key] = value
     return book_informations
 
