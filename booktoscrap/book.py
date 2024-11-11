@@ -4,6 +4,8 @@ from urllib.parse import urljoin
 from booktoscrap.category import BASE_CATALOGUE_URL
 from booktoscrap.connection import get_soup
 
+BASE_URL = "https://books.toscrape.com/"
+
 
 def get_book_infos(book_url: str) -> dict[str, str]:
     """
@@ -33,6 +35,11 @@ def get_book_infos(book_url: str) -> dict[str, str]:
         # On ajoute cette note à notre dictionnaire
         book_informations["Rating"] = rating_value
 
+    # On récupère le lien relatif de l'image du livre, qu'on transforme en absolu.
+    active_item = soup.find("div", class_="item active")
+    img_url = urljoin(BASE_URL, active_item.find("img").attrs["src"])
+    book_informations["Picture"] = img_url
+
     # On récupère les informations du livre présentes dans un tableau.
     table = soup.find("table", class_="table table-striped")
     for row in table.find_all("tr"):
@@ -52,9 +59,6 @@ def get_book_infos(book_url: str) -> dict[str, str]:
                 book_informations[key] = match.group(1)
 
     return book_informations
-
-
-# TODO get img_url
 
 
 def generate_all_book_urls_from_category_page(category_page_url: str) -> list:
