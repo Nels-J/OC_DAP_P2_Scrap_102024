@@ -5,13 +5,16 @@ from typing import Iterable
 def create_books_informations_csv_file(filename: str, book_data: Iterable):
 
     fieldnames = [
+        "Title",
+        "Rating",
         "Availability",
         "Number of reviews",
         "Price (excl. tax)",
         "Price (incl. tax)",
-        "Product Type",
         "Tax",
+        "Product Type",
         "UPC",
+        "Picture"
     ]
 
     with open(filename, "w") as csv_output_file:
