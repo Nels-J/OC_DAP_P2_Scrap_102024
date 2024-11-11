@@ -17,14 +17,13 @@ def get_book_infos(book_url: str) -> dict[str, str]:
     """
     soup = get_soup(book_url)
     table = soup.find("table", class_="table table-striped")
-    book_informations = {}
-    book_informations["Title"] = soup.find("h1").text.strip()
+    book_informations = {"Title": soup.find("h1").text.strip()}
     for row in table.find_all("tr"):
         key = row.find("th").text.strip()
         value = row.find("td").text.strip()
-        book_informations[key] = value
-    if "Price" or "Tax" in key:
-        value = value.replace("Â£", "£").strip()
+        if "Price" or "Tax" in key:
+            value = value.replace("Â£", "£").strip()
+            book_informations[key] = value
     return book_informations
 
 # TODO get title rating + img_url
