@@ -4,8 +4,6 @@ from urllib.parse import urljoin
 from booktoscrap.category import BASE_CATALOGUE_URL
 from booktoscrap.connection import get_soup
 
-BASE_URL = "https://books.toscrape.com/"
-
 
 def get_book_infos(book_url: str) -> dict[str, str]:
     """
@@ -37,7 +35,8 @@ def get_book_infos(book_url: str) -> dict[str, str]:
 
     # On récupère le lien relatif de l'image du livre, qu'on transforme en absolu.
     active_item = soup.find("div", class_="item active")
-    img_url = urljoin(BASE_URL, active_item.find("img").attrs["src"])
+    base_url = BASE_CATALOGUE_URL[:-10]
+    img_url = urljoin(base_url, active_item.find("img").attrs["src"])
     book_informations["Picture"] = img_url
 
     # On récupère les informations du livre présentes dans un tableau.
