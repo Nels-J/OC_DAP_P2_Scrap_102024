@@ -16,17 +16,31 @@ def get_book_infos(book_url: str) -> dict[str, str]:
         book_informations: A dictionary of book information.
     """
     soup = get_soup(book_url)
-    table = soup.find("table", class_="table table-striped")
+
+    # On récupère le titre du livre qu'on ajoute à notre dictionnaire
     book_informations = {"Title": soup.find("h1").text.strip()}
+
+    # On récupère la classe représentant la note des lecteurs
+    star_rating = soup.find("p", class_="star-rating")
+    if star_rating:
+        # On liste les classes présentes dans le tag, puis on extrait la classe additionnelle différente de 'star-rating'
+        class_list = star_rating.get('class')
+        additional_class = [cls for cls in class_list if cls != 'star-rating'][0]
+        # On récupère la note de ce livre qu'on ajoute à notre dictionnaire
+        book_informations["Rating"] = additional_class
+
+    # On récupère les informations du livre présentes dans un tableau
+    table = soup.find("table", class_="table table-striped")
     for row in table.find_all("tr"):
         key = row.find("th").text.strip()
         value = row.find("td").text.strip()
         if "Price" or "Tax" in key:
             value = value.replace("Â£", "£").strip()
+            # On ajoute les infos au dictionnaire
             book_informations[key] = value
     return book_informations
 
-# TODO get title rating + img_url
+# TODO get img_url
 
 def generate_all_book_urls_from_category_page(category_page_url: str) -> list:
     """
@@ -53,7 +67,7 @@ if __name__ == "__main__":
     print(
         get_book_infos(f"{BASE_CATALOGUE_URL}in-a-dark-dark-wood_963/index.html")
     )
-    # for book in generate_all_book_urls_from_category_page(
-    #     f"{BASE_CATALOGUE_URL}category/books/mystery_3/index.html"
-    # ):
-    #     print(book)
+    for book in generate_all_book_urls_from_category_page(
+        f"{BASE_CATALOGUE_URL}category/books/mystery_3/index.html"
+    ):
+        print(book)
