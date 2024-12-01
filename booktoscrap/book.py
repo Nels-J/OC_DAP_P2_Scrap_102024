@@ -49,7 +49,13 @@ def get_book_infos(book_url: str) -> dict[str, str]:
     book_informations["image_url"] = img_url
 
     # On récupère la description produit.
-    toto = soup.find
+    product_description = soup.select('#product_description + p')
+    if product_description:
+        print(product_description[0].get_text())
+        book_informations["product_description"] = product_description[0].get_text()
+    else:
+        book_informations["product_description"] = "Unavailable description"
+
 
     # On récupère les informations du livre présentes dans le tableau.
     table = soup.find("table", class_="table table-striped")
@@ -66,10 +72,6 @@ def get_book_infos(book_url: str) -> dict[str, str]:
         value = row.find("td").text.strip()
         if key not in book_table_headers:
             continue
-
-        # On nettoie l'interprétation monétaire.
-        if "Price" in key or "Tax" in key:
-            value = value.replace("Â£", "£").strip()
 
         # On extrait la quantité dans un texte 'In stock (18 available)'
         elif key == "Availability":
