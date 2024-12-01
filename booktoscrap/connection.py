@@ -14,6 +14,7 @@ def get_url_response(url: str) -> Response:
         response: Response object
     """
     response = requests.get(url)
+    response.encoding = 'utf-8'     # Avoiding invalid text due to bad decoding
     response.raise_for_status()
     return response
 
