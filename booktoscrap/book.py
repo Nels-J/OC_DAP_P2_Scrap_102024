@@ -48,6 +48,9 @@ def get_book_infos(book_url: str) -> dict[str, str]:
     img_url = urljoin(base_url, active_item.find("img").attrs["src"])
     book_informations["image_url"] = img_url
 
+    # On récupère la description produit.
+    toto = soup.find
+
     # On récupère les informations du livre présentes dans le tableau.
     table = soup.find("table", class_="table table-striped")
 
