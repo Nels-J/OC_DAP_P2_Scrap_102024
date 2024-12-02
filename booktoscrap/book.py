@@ -60,7 +60,7 @@ def get_book_infos(book_url: str) -> dict[str, str]:
     table = soup.find("table", class_="table table-striped")
 
     book_table_headers = {
-        'UPC': 'universal_product_code',
+        'UPC': 'universal_product_code (upc)',
         'Price (incl. tax)': 'price_including_tax',
         'Price (excl. tax)': 'price_excluding_tax',
         'Availability': 'number_available',
