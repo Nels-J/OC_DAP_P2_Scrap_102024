@@ -51,7 +51,6 @@ def get_book_infos(book_url: str) -> dict[str, str]:
     # On récupère la description produit.
     product_description = soup.select('#product_description + p')
     if product_description:
-        print(product_description[0].get_text())
         book_informations["product_description"] = product_description[0].get_text()
     else:
         book_informations["product_description"] = "Unavailable description"
