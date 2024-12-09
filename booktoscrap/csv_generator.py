@@ -15,4 +15,4 @@ def create_books_informations_csv_file(filename: str, book_data: Iterable[Dict[s
 
         for book in book_data:
             writer.writerow(book)
-            yield book      # Renvoi afin de télécharger les images des livres
+            yield book      # Renvoi afin de télécharger les images des autres livres

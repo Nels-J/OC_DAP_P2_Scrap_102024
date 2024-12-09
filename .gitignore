@@ -171,3 +171,5 @@ cython_debug/
 /booktoscrap/*.csv
 
 
+Pablo.txt
+/booktoscrap/Pablo.txt
