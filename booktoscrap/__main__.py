@@ -22,6 +22,7 @@ def scrapbooks(category_url: str, category_name: str):
             book_info["category_name"] = category_name
             yield book_info
 
+
 if __name__ == "__main__":
     for category_name, category_url in get_categories_from_home(
         "https://books.toscrape.com/"
@@ -29,7 +30,10 @@ if __name__ == "__main__":
         category_dir = create_directory(category_name)
         category_books = scrapbooks(category_url, category_name)
 
-        for book in create_books_informations_csv_file(f"{category_dir}/{category_name}.csv", category_books):
+        for book in create_books_informations_csv_file(
+                filename=f"{category_dir}/{category_name}.csv",
+                book_data=category_books
+        ):
             download_image(
                 category_dir=category_dir,
                 category_name=category_name,
