@@ -2,6 +2,7 @@ import csv
 import os
 from typing import Iterable, Dict
 
+
 def create_directory(category_name: str) -> str:
     """
 
@@ -25,7 +26,11 @@ def create_directory(category_name: str) -> str:
 
     return f"Export/{category_name}"
 
-def create_books_informations_csv_file(filename: str, book_data: Iterable[Dict[str, str]]):
+
+def create_books_informations_csv_file(
+        filename: str,
+        book_data: Iterable[Dict[str, str]]
+):
 
     # Stockage des infos du 1er livre généré pour définir les entêtes
     first_book = next(book_data)
