@@ -18,7 +18,10 @@ def get_book_infos(book_url: str) -> dict[str, str]:
     soup = get_soup(book_url)
 
     # On récupère le titre du livre son URL qu'on ajoute à notre dictionnaire.
-    book_informations = {"title": soup.find("h1").text.strip(), "product_page_url": book_url}
+    book_informations = {
+        "title": soup.find("h1").text.strip(),
+        "product_page_url": book_url
+    }
 
     # On récupère la catégorie du livre qu'on ajoute à notre dictionnaire.
     book_category = soup.find('ul', class_='breadcrumb')
@@ -55,7 +58,6 @@ def get_book_infos(book_url: str) -> dict[str, str]:
     else:
         book_informations["product_description"] = "Unavailable description"
 
-
     # On récupère les informations du livre présentes dans le tableau.
     table = soup.find("table", class_="table table-striped")
 
@@ -81,10 +83,11 @@ def get_book_infos(book_url: str) -> dict[str, str]:
                 available       # et du mot available
                 \)              # on arrête la regex dès la parenthèse fermante
             """
+
             # L'emploi de verbose m'a permis de détailler la regex ci-dessus
             match = re.search(regex_pattern, value, re.VERBOSE)
             if match:
-                value = int(match.group(1)) # groupe 0 est égal à la string entière
+                value = int(match.group(1))     # groupe 0 égal la string entière
 
         book_informations[book_table_headers[key]] = value
 
