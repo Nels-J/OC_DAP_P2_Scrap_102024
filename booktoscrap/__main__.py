@@ -31,12 +31,11 @@ if __name__ == "__main__":
         category_books = scrapbooks(category_url, category_name)
 
         for book in create_books_informations_csv_file(
-                filename=f"{category_dir}/{category_name}.csv",
-                book_data=category_books
+            filename=f"{category_dir}/{category_name}.csv", book_data=category_books
         ):
             download_image(
                 category_dir=category_dir,
                 category_name=category_name,
-                image_url=book['image_url'],
-                book_upc=book['universal_product_code (upc)']
+                image_url=book["image_url"],
+                book_upc=book["universal_product_code (upc)"],
             )

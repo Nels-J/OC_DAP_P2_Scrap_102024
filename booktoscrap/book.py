@@ -20,12 +20,12 @@ def get_book_infos(book_url: str) -> dict[str, str]:
     # On récupère le titre du livre son URL qu'on ajoute à notre dictionnaire.
     book_informations = {
         "title": soup.find("h1").text.strip(),
-        "product_page_url": book_url
+        "product_page_url": book_url,
     }
 
     # On récupère la catégorie du livre qu'on ajoute à notre dictionnaire.
-    book_category = soup.find('ul', class_='breadcrumb')
-    breadcrumb_links = book_category.find_all('a')
+    book_category = soup.find("ul", class_="breadcrumb")
+    breadcrumb_links = book_category.find_all("a")
     if breadcrumb_links:
         last_breadcrumb_link = breadcrumb_links[-1].get_text()
         book_informations["category"] = last_breadcrumb_link
@@ -52,7 +52,7 @@ def get_book_infos(book_url: str) -> dict[str, str]:
     book_informations["image_url"] = img_url
 
     # On récupère la description produit.
-    product_description = soup.select('#product_description + p')
+    product_description = soup.select("#product_description + p")
     if product_description:
         book_informations["product_description"] = product_description[0].get_text()
     else:
@@ -62,10 +62,10 @@ def get_book_infos(book_url: str) -> dict[str, str]:
     table = soup.find("table", class_="table table-striped")
 
     book_table_headers = {
-        'UPC': 'universal_product_code (upc)',
-        'Price (incl. tax)': 'price_including_tax',
-        'Price (excl. tax)': 'price_excluding_tax',
-        'Availability': 'number_available',
+        "UPC": "universal_product_code (upc)",
+        "Price (incl. tax)": "price_including_tax",
+        "Price (excl. tax)": "price_excluding_tax",
+        "Availability": "number_available",
     }
 
     for row in table.find_all("tr"):
@@ -87,7 +87,7 @@ def get_book_infos(book_url: str) -> dict[str, str]:
             # L'emploi de verbose m'a permis de détailler la regex ci-dessus
             match = re.search(regex_pattern, value, re.VERBOSE)
             if match:
-                value = int(match.group(1))     # groupe 0 égal la string entière
+                value = int(match.group(1))  # groupe 0 égal la string entière
 
         book_informations[book_table_headers[key]] = value
 
