@@ -170,6 +170,7 @@ cython_debug/
 # Generated files
 /booktoscrap/*.csv
 
+Export/
 
 Pablo.txt
 /booktoscrap/Pablo.txt
