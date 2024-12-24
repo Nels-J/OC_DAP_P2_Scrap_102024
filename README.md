@@ -4,12 +4,13 @@
 ![BeautifulSoup4 4.12.3](https://img.shields.io/badge/BeautifulSoup4-%5E4.12.3-brightgreen)
 ![Requests ^2.32.3](https://img.shields.io/badge/Requests-%5E2.32.3-brightblue)
 
+-----------------------------------------------------------------
 Bookstoscrap est un module Python conçu pour extraire (scraper) des données du site web https://books.toscrape.com/
 
-**Objectif de ce module :**
-- Absorber le contenu des pages du site,
-- Extraire certaines données,
-- Restituer à l'utilisateur sous un format exploitable.
+##Objectif de ce module :
+- **Absorber** le contenu des pages du site,
+- **Extraire** certaines données,
+- **Restituer** à l'utilisateur sous un format exploitable.
 
 **Le résultat obtenu est sous la forme suivante :**
 
@@ -33,7 +34,6 @@ Bookstoscrap est un module Python conçu pour extraire (scraper) des données du
 
 Le projet vise donc à faciliter et structurer l'analyse fastidieuse d'un site concurrent.
 
------------------------------------------------------
 
 ## Prérequis à l'installation de Booktoscrap
 - **Avoir l'outil [![Poetry](https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json)](https://python-poetry.org/) installé sur sa machine**, Poetry servira de gestionnaire de dépendances.
@@ -41,39 +41,46 @@ Le projet vise donc à faciliter et structurer l'analyse fastidieuse d'un site c
     - A l'aide d'un terminal en exécutant la commande `poetry --version`
     - Si Poetry est déja installé, vous devriez voir un résultat du type `Poetry version 1.x.x`
       - Poetry n'est pas installé sur ma machine **comment l'installer ?**
-        - Toujours dans le terminal faire ce qui suit :
-          ```bash
-          curl -sSL https://install.python-poetry.org | python3 -
+      - Toujours dans le terminal faire ce qui suit :
+        ```bash
+        curl -sSL https://install.python-poetry.org | python3 -
           
-          # Le mode d'installation peut différer selon la plateforme utilisé.
-          # Si besoin consulter la page d'installation du site Poetry via :
-          # https://python-poetry.org/docs/#installing-with-the-official-installer
-          ```
+        # Le mode d'installation peut différer selon la plateforme utilisé.
+        # Si besoin consulter la page d'installation du site Poetry via :
+        # https://python-poetry.org/docs/#installing-with-the-official-installer
+        ```
 
---------------------------------------------------------
+
 ## Installation
 - **Vérifiez-les prérequis avant de passer à la suite.**
 
-- Cloner le projet :
+- **Cloner le projet :**
   - Le repo github est accessible ici : https://github.com/Nels-J/OC_DAP_P2_Scrap_102024
       ```bash
     # Pour cloner directement en SSH
       git clone git@github.com:Nels-J/OC_DAP_P2_Scrap_102024.git
       ```
   
-- Configurer son environnement virtuel :
-Il est préferable que l'environnement virtuel soit créé dans le même répertoire du projet,
-pour cela, on exécute cette commande qui défini cette configuration :
+- **Configurer son environnement virtuel :**
+Un environnement virtuel créé dans le répertoire du projet est conseillé.
+Pour configurer Poetry dans ce sens, exécuter la commande :
      ```bash
      poetry config virtualenvs.in-project true
      ```
-- Installer les dépendances à l'aide de la commande Poetry :
+- Installer les dépendances du projet à l'aide de la commande Poetry :
+
     ```bash
     poetry install
     ```
-### À ce stade l'installation du projet devrait être terminé.
 
+**À ce stade l'installation du projet devrait être terminée.**
+
+
+## Lancer le module Booktoscrap
+Pour mettre en route,
 ```bash
 poetry run python -m booktoscrap
 ```
+
+
 
