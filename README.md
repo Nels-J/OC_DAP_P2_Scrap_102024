@@ -41,14 +41,14 @@ Le projet vise donc à faciliter et structurer l'analyse fastidieuse d'un site c
     - A l'aide d'un terminal en exécutant la commande `poetry --version`
     - Si Poetry est déja installé, vous devriez voir un résultat du type `Poetry version 1.x.x`
       - Poetry n'est pas installé sur ma machine **comment l'installer ?**
-      - Toujours dans le terminal faire ce qui suit :
-        ```bash
-        curl -sSL https://install.python-poetry.org | python3 -
+        - Toujours dans le terminal faire ce qui suit :
+          ```bash
+          curl -sSL https://install.python-poetry.org | python3 -
           
-        # Le mode d'installation peut différer selon la plateforme utilisé.
-        # Si besoin consulter la page d'installation du site Poetry via :
-        # https://python-poetry.org/docs/#installing-with-the-official-installer
-        ```
+          # Le mode d'installation peut différer selon la plateforme utilisé.
+          # Si besoin consulter la page d'installation du site Poetry via :
+          # https://python-poetry.org/docs/#installing-with-the-official-installer
+          ```
 
 
 ## Installation
@@ -73,7 +73,12 @@ Pour configurer Poetry dans ce sens, exécuter la commande :
     poetry install
     ```
 
+
 **À ce stade l'installation du projet devrait être terminée.**
+
+
+## Lancer le module Booktoscrap
+Pour lancer l'extraction des données exécuter la commande suivant dans votre terminal.
 
 
 ## Lancer le module Booktoscrap
@@ -81,6 +86,3 @@ Pour mettre en route,
 ```bash
 poetry run python -m booktoscrap
 ```
-
-
-
