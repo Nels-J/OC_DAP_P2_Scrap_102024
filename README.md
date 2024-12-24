@@ -4,13 +4,12 @@
 ![BeautifulSoup4 4.12.3](https://img.shields.io/badge/BeautifulSoup4-%5E4.12.3-brightgreen)
 ![Requests ^2.32.3](https://img.shields.io/badge/Requests-%5E2.32.3-brightblue)
 
------------------------------------------------------------------
 Bookstoscrap est un module Python conçu pour extraire (scraper) des données du site web https://books.toscrape.com/
 
-##Objectif de ce module :
-- **Absorber** le contenu des pages du site,
-- **Extraire** certaines données,
-- **Restituer** à l'utilisateur sous un format exploitable.
+**Objectif de ce module :**
+- Absorber le contenu des pages du site,
+- Extraire certaines données,
+- Restituer à l'utilisateur sous un format exploitable.
 
 **Le résultat obtenu est sous la forme suivante :**
 
@@ -72,7 +71,7 @@ Pour configurer Poetry dans ce sens, exécuter la commande :
     ```bash
     poetry install
     ```
-
+### À ce stade l'installation du projet devrait être terminé.
 
 **À ce stade l'installation du projet devrait être terminée.**
 
@@ -86,3 +85,4 @@ Pour mettre en route,
 ```bash
 poetry run python -m booktoscrap
 ```
+
