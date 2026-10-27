@@ -1,8 +1,8 @@
 # Booktoscrap (Bêta)
 [![Poetry](https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json)](https://python-poetry.org/)
 ![Python version](https://img.shields.io/badge/Python-%5E3.12-blue.svg)
-![BeautifulSoup4 4.12.3](https://img.shields.io/badge/BeautifulSoup4-%5E4.12.3-brightgreen)
-![Requests ^2.32.3](https://img.shields.io/badge/Requests-%5E2.32.3-brightblue)
+![BeautifulSoup4 4.15.0](https://img.shields.io/badge/BeautifulSoup4-%5E4.15.0-brightgreen)
+![Requests ^2.34.2](https://img.shields.io/badge/Requests-%5E2.34.2-brightblue)
 
 **Bookstoscrap** est un module Python conçu pour extraire (scraper) des données du site web [books.toscrape](https://books.toscrape.com/)
 
